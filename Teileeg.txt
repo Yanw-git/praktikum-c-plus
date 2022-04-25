@@ -1,6 +1,11 @@
 e) Fetchen Sie das Aufgabenrepository und mergen Sie dessen main-Branch in ihren
 eigenen. Geht dies mit einem einzigen git-Befehl?
+
+   git pull common main
+
+
 g)
 Überprüfen Sie mithilfe des Werkzeuges gitk, ob Ihr push erfolgreich war und die
 Änderungen auf dem Server liegen! Notieren Sie die in gitk angezeigte SHA1-ID
 des entsprechenden Commits!
+
