@@ -9,3 +9,13 @@ g)
 Änderungen auf dem Server liegen! Notieren Sie die in gitk angezeigte SHA1-ID
 des entsprechenden Commits!
 
+346da0c1a1d8dc1b4ee1a9627558d72d18837161 (HEAD -> main, origin/main, origin/HEAD)
+7ea45b4508b61fd6fb36a06891c911137cb319e1   Teileeg.txt
+f413f890870688ea3dec97dd934e9350f032fab2    Revert "delete#"
+e1f82166b03533a35c417a4a9f755b7c31a7481b   delete#
+9f7a7e9e2afc3d5768adf0a361a72889b2f89c2b    main. cpp 01
+fd3916e90acde801ebff417d25b9249a180ff01b     Calc.cpp 01
+bc8e13bb996fc85415f196d05f9242678a2a2ba6   (common/main) Bugs fixed
+2f8080333665ee1490eea8a942ba916ed1381e7e   Lecture 1
+cbcd529a6221cf046ca047e745e57d076c387b30   Init
+
