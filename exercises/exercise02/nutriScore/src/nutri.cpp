@@ -8,7 +8,7 @@
 using Meal = std::tuple<std::string, char, size_t>;
 
 
-const Meal& getUnhealthier(const Meal& mealA, const Meal& mealB) {
+const Meal& getUnhealthier(const Meal& mealA, const Meal& mealB)  {
 
     // TODO: Implement here
        using namespace std;
@@ -49,20 +49,26 @@ void analyzeMeals(std::ostream& os, const std::vector<Meal>& meals)
 		
 		if(std::get<1>(meals[count])=='A'||std::get<1>(meals[count])=='B')      
 		 gesund++;
+	     count++;
+	}   
+	     
+	std::cout<<count<<"verschiedene Lebensmittel insgesamt verzehrt wurden"<<std::endl;
+    std::cout<<count<<"Von "<<count<< " Lebensmitteln waren "<<gesund<< " gesund"<<std::endl;   
+	   
+	   
+	    
+	    for(std::size_t i=0;i<meals.size();i++)
+	   { Meal& mealA=meals[i];  
+		Meal& mealB=meals[i+1]; 
+        Meal& getUnhealthier(const Meal& mealA, const Meal& mealB);  }
+	       
 	      
-	      if(std::get<1>(meals[count])=='D'||std::get<1>(meals[count])=='E')
-	       std::cout<< meals[count];
 	     // const Meal& getUnhealthier(const Meal& mealA, const Meal& mealB)
-	      
-	      
-	      
-	      count++; 
-	}
-    std::cout<<count<<"verschiedene Lebensmittel insgesamt verzehrt wurden"<<std::endl;
-    std::cout<<count<<"Von "<<count<< " Lebensmitteln waren "<<gesund<< " gesund"<<std::endl;
+	    
+    
    
     
-    
+   
     
     
    // os<< <<std::endl;
