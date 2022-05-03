@@ -4,20 +4,29 @@
 #include "parser.h"
 #include <sstream>
 
-std::vector<std::string> split(std::istream& is, char delim)
+std::vector<std::string> split(std::itream& is, char delim)
 {
     std::vector<std::string> result;
     
     // TODO: Implement here 
     
-    return result;
+    std::string line;
+     std::cout<<"Input a line:";
+    while(std::getline(is,line,' '))
+    { result.emplace_back(line);
+     std::cout<<"Input a line:";}
+     return result;
 }
 
-std::vector<IndexedString> parse(std::istream& is)
+std::vector<IndexedString> parse(std::ifstream& is)
 {
     std::vector<IndexedString> strings;
     
     // TODO: Implement here
+    is("csv-file.csv");
+    
+    
+    
     
     return strings;
 }
