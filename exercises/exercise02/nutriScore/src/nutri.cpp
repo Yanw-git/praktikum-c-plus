@@ -24,18 +24,18 @@ const Meal& getUnhealthier(const Meal& mealA, const Meal& mealB)  {
 		else 
 	  	  return mealB;}
 	   
-   if(get<1>(mealA)=='E'&&get<1>(mealB)=='D')
+  if(get<1>(mealA)=='E'&&get<1>(mealB)=='D')
      { if(get<2>(mealA)*2>get<2>(mealB))
 	   return mealA;
 	  else
 	  return mealB;}
 	  
-   if(get<1>(mealA)=='D'&&get<1>(mealB)=='E')
+  if(get<1>(mealA)=='D'&&get<1>(mealB)=='E')
      {if(get<2>(mealA)<get<2>(mealB)*2)
 	    return mealB;
 	  else
         return mealA;  }   
-                           // You can change this line
+        return mealA;                    // You can change this line
 }
 
 void analyzeMeals(std::ostream& os, const std::vector<Meal>& meals)
@@ -52,28 +52,19 @@ void analyzeMeals(std::ostream& os, const std::vector<Meal>& meals)
 	     count++;
 	}   
 	     
-	std::cout<<count<<"verschiedene Lebensmittel insgesamt verzehrt wurden"<<std::endl;
-    std::cout<<count<<"Von "<<count<< " Lebensmitteln waren "<<gesund<< " gesund"<<std::endl;   
+	os<<count<<"verschiedene Lebensmittel insgesamt verzehrt wurden"<<std::endl;
+    os<<count<<"Von "<<count<< " Lebensmitteln waren "<<gesund<< " gesund"<<std::endl;   
 	   
 	   
+    Meal R;    
+   for(std::size_t i=0;i<meals.size()-1;i++)
+	 {  Meal mealA=meals[i];  
+    	Meal mealB=meals[i+1]; 
+        Meal R=getUnhealthier(mealA, mealB);}
+        os<<"Es sollte lieber auf das Lebensmittel"<< std::get<0>(R)<<"verzichtet werden, es wurde "<< std::get<2>(R)<<"mal verzehrt"<<std::endl;  // You can change this line;
+         
+        
 	    
-	    for(std::size_t i=0;i<meals.size();i++)
-	   { Meal& mealA=meals[i];  
-		Meal& mealB=meals[i+1]; 
-        Meal& getUnhealthier(const Meal& mealA, const Meal& mealB);  }
-	       
-	      
-	     // const Meal& getUnhealthier(const Meal& mealA, const Meal& mealB)
-	    
     
-   
-    
-   
-    
-    
-   // os<< <<std::endl;
-    
-    
-    //os << std::endl;  // You can change this line
 }
 
