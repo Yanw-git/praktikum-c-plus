@@ -56,12 +56,12 @@ void analyzeMeals(std::ostream& os, const std::vector<Meal>& meals)
     os<<count<<"Von "<<count<< " Lebensmitteln waren "<<gesund<< " gesund"<<std::endl;   
 	   
 	   
-    Meal R;    
+      
    for(std::size_t i=0;i<meals.size()-1;i++)
 	 {  Meal mealA=meals[i];  
     	Meal mealB=meals[i+1]; 
-        Meal R=getUnhealthier(mealA, mealB);}
-        os<<"Es sollte lieber auf das Lebensmittel"<< std::get<0>(R)<<"verzichtet werden, es wurde "<< std::get<2>(R)<<"mal verzehrt"<<std::endl;  // You can change this line;
+        Meal R=getUnhealthier(mealA, mealB);
+        os<<"Es sollte lieber auf das Lebensmittel"<< std::get<0>(R)<<"verzichtet werden, es wurde "<< std::get<2>(R)<<"mal verzehrt"<<std::endl; } // You can change this line;
          
         
 	    
