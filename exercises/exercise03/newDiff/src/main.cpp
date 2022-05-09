@@ -11,6 +11,16 @@ int main(int argc, char** argv)
 {
     std::vector<std::string> arguments(argv, argv + argc);
     // Implement here
+    std::ifstream read1(arguments[1]);       //oeffen Datein arg1? 
+    std::ifstream read2(arguments[2]);
+    std::string line;
+    while(std::getline(read1,line))      //zeilenweise?
+    
+    
+    
+    
+    
+    
     return 0;
 }
 
