@@ -45,8 +45,7 @@ std::vector<IndexedString> parse(std::istream& is)
     return strings;
 }
 
-#define DEBUG
-#ifndef DEBUG
+
 void writeSentence(std::ostream& os, const std::vector<IndexedString>& strings)
 {
     
@@ -55,5 +54,5 @@ void writeSentence(std::ostream& os, const std::vector<IndexedString>& strings)
     os << std::endl;
 }
 
-#endif
+
 

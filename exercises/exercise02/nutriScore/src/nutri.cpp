@@ -14,7 +14,7 @@ const Meal& getUnhealthier(const Meal& mealA, const Meal& mealB)  {
        using namespace std;
    if(get<1>(mealA)&&get<1>(mealB)=='E')
 	   {if (get<2>(mealA)>get<2>(mealB))
-		  return mealA;
+		  return mealA;                   //hanshu de1 fan hui lei xing shi referenz,fan hui de mealA,B ye shi referenz
 		else 
 		  return mealB;}
 	  
@@ -44,8 +44,14 @@ void analyzeMeals(std::ostream& os, const std::vector<Meal>& meals)
     // TODO: Implement here
   
     int count=0,gesund=0;
-    for(std::vector<Meal>::const_iterator iter=meals.begin();iter!=meals.end();++iter)
-    {
+     for(auto value: meals)
+     {
+		 std::cout<<value;
+	 }
+     
+     
+    for(auto iter=meals.begin();iter!=meals.end();++iter)   
+  {
 		
 		if(std::get<1>(meals[count])=='A'||std::get<1>(meals[count])=='B')      
 		 gesund++;
@@ -58,9 +64,9 @@ void analyzeMeals(std::ostream& os, const std::vector<Meal>& meals)
 	   
       
    for(std::size_t i=0;i<meals.size()-1;i++)
-	 {  Meal mealA=meals[i];  
-    	Meal mealB=meals[i+1]; 
-        Meal R=getUnhealthier(mealA, mealB);
+	 {  const Meal& mealA=meals[i];     //datentype const meals
+    	const Meal& mealB=meals[i+1]; 
+        const Meal& R=getUnhealthier(mealA, mealB);
         os<<"Es sollte lieber auf das Lebensmittel"<< std::get<0>(R)<<"verzichtet werden, es wurde "<< std::get<2>(R)<<"mal verzehrt"<<std::endl; } // You can change this line;
          
         
