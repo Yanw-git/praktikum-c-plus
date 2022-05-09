@@ -26,7 +26,6 @@ int main(int argc, char** argv)
     return 0;
 }
 
-
 #if defined(NOBONUS)
 void compareFilesLineByLine(const std::vector<std::string>& lines1,
                             const std::vector<std::string>& lines2)
@@ -36,18 +35,23 @@ void compareFilesLineByLine(const std::vector<std::string>& lines1,
 #else
 
 
+
 void compareFilesLineByLine(const std::vector<std::string>& lines1,
                             const std::vector<std::string>& lines2)    
 {
-	for(std::size_t i,j=0;j<lines2.size();++i,++j)    //Index i feur lines1, j feur lines2
+	for(std::size_t i=0;i<lines1.size();++i)    
 	    {
-		   if(lines1[i]!=lines2[j])
-			  {std::cout<<"<<<"<<i<<"<<<"<<lines1[i]<<std::endl;
-			   std::cout<<">>>"<<j<<">>>"<<lines2[j]<<std::endl;	
-			   }	 
+		   if(lines1[i]!=lines2[i])
+			  {std::cout<<"<<<"<<(i+1)<<"<<<"<<lines1[i]<<std::endl;
+			   std::cout<<">>>"<<(i+1)<<">>>"<<lines2[i]<<std::endl;	
+			   }
+		}	 
+	for(std::size_t j=lines1.size();j<lines2.size();++j)
+	   {
+		   std::cout<<">>>"<<(j+1)<<">>>"<<lines2[j]<<std::endl;
+		
 		 }   
-		 
-		 
+		 	 
 }    
 #endif
 
