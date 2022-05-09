@@ -11,18 +11,21 @@ int main(int argc, char** argv)
 {
     std::vector<std::string> arguments(argv, argv + argc);
     // Implement here
-    std::ifstream read1(arguments[1]);       //oeffen Datein arg1? 
+    std::ifstream read1(arguments[1]);       //oeffnen Datein arg1=1.txt
     std::ifstream read2(arguments[2]);
+    std::vector<std::string> c1;
+    std::vector<std::string> c2;
     std::string line;
-    while(std::getline(read1,line))      //zeilenweise?
-    
-    
-    
-    
+    while(std::getline(read1,line))      //zeilenweise lesen 1.txt ein
+      c1.emplace_back(line);
+    while(std::getline(read2,line))
+      c2.emplace_back(line);
+    compareFilesLineByLine(c1,c2);                            
     
     
     return 0;
 }
+
 
 #if defined(NOBONUS)
 void compareFilesLineByLine(const std::vector<std::string>& lines1,
@@ -32,10 +35,19 @@ void compareFilesLineByLine(const std::vector<std::string>& lines1,
 }          
 #else
 
+
 void compareFilesLineByLine(const std::vector<std::string>& lines1,
                             const std::vector<std::string>& lines2)    
 {
-    // Implement here
+	for(std::size_t i,j=0;j<lines2.size();++i,++j)    //Index i feur lines1, j feur lines2
+	    {
+		   if(lines1[i]!=lines2[j])
+			  {std::cout<<"<<<"<<i<<"<<<"<<lines1[i]<<std::endl;
+			   std::cout<<">>>"<<j<<">>>"<<lines2[j]<<std::endl;	
+			   }	 
+		 }   
+		 
+		 
 }    
 #endif
 

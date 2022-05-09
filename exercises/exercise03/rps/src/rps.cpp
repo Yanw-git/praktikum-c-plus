@@ -55,24 +55,20 @@ Result rockPaperScissors(const std::string& p1, const std::string& p2) {
     if(R1==Move::Error||R2==Move::Error)
        //std::cout<<"Invalid"<<std::endl;
        	   return Result::Invalid;	
+      return Result::Invalid;
 }
 
 int main(int argc, char** argv) {
     std::vector<std::string> args(argv, argv + argc);
 
     // TODO: Add code here
+   std::cout<<args[1]<<std::endl;             
+   std::cout<<args[2]<<std::endl;
+   std::string p1=args[1];
+   std::string p2=args[2];
+   //std::cout<<"Player1:"<<args[1]<<std::endl;
+   //std::cout<<"Player2:"<<args[2]<<std::endl;
 
-    std::cout<<"p1ayer1=";
-    std::cin>>std::string p1>>std::endl;
-    std::cout<<"1ayer2=";
-    std::cin>>std::string p2>>std::endl;
-    
-   
-    
-  
- 
- 
-   
     Result Ergebnis;
     Ergebnis=rockPaperScissors(p1,p2);
     if(Ergebnis==Result::Player1Wins)
