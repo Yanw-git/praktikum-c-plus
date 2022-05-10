@@ -8,11 +8,12 @@ std::vector<std::string> split(std::istream& is, char delim)
 {
     std::vector<std::string> result;
     std::string elem;
-
+    int count=0;                  //leer line
     while(std::getline(is, elem, delim))
     {
         if(elem != "")
             result.push_back(std::move(elem));
+            count++;
     }
     return result;
 }
@@ -39,6 +40,23 @@ struct WCResult
 };
 
 //TODO: Implement getWordCount her
+WCResult getWordCount(std::istream& s, std::string Name)
+{
+	
+	std::vector<std::string> c=split(s,'\n');
+	int zeilen;
+	zeilen=c.size();
+	
+	
+	
+	
+	
+	//return (WcReult);
+}
+
+
+
+
 
 int main(int argc, char** argv)
 {

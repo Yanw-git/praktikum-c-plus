@@ -36,10 +36,12 @@ void compareFilesLineByLine(const std::vector<std::string>& lines1,
 
 
 
+
 void compareFilesLineByLine(const std::vector<std::string>& lines1,
                             const std::vector<std::string>& lines2)    
 {
-	for(std::size_t i=0;i<lines1.size();++i)    
+	if (lines1.size()<=lines2.size())               //txt.vorne<txt hinten
+	 { for(std::size_t i=0;i<lines1.size();++i)    
 	    {
 		   if(lines1[i]!=lines2[i])
 			  {std::cout<<"<<<"<<(i+1)<<"<<<"<<lines1[i]<<std::endl;
@@ -47,12 +49,25 @@ void compareFilesLineByLine(const std::vector<std::string>& lines1,
 			   }
 		}	 
 	for(std::size_t j=lines1.size();j<lines2.size();++j)
-	   {
+	    {
 		   std::cout<<">>>"<<(j+1)<<">>>"<<lines2[j]<<std::endl;
-		
-		 }   
+		}  
+	  } 
+	  
+	else                                //txt vorne>txt hinten
+	{ for(std::size_t i=0;i<lines2.size();++i)    
+	    {
+		   if(lines1[i]!=lines2[i])
+			  {std::cout<<"<<<"<<(i+1)<<"<<<"<<lines1[i]<<std::endl;
+			   std::cout<<">>>"<<(i+1)<<">>>"<<lines2[i]<<std::endl;	
+			   }
+		}	 
+	for(std::size_t j=lines2.size();j<lines1.size();++j)
+	    {
+		   std::cout<<">>>"<<(j+1)<<">>>"<<lines1[j]<<std::endl;
+		}  
+	  } 
 		 	 
 }    
 #endif
-
 
