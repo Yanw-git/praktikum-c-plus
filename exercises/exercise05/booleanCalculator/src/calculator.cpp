@@ -59,15 +59,11 @@ void UnaryCalculator::print(std::ostream& os, TraversalType type) const
 	    this->inner->print(os,type);
 		break;
 	    case TraversalType::Postfix:
-        {
-            this->inner->print(os, type);
-            os << this->op ;
+        this->inner->print(os, type);
+         os << this->op ;
             break;
-        }
         case TraversalType::BonusInfix :
-        {
             break;
-        }
         default: break;
 		
     }   
@@ -104,33 +100,25 @@ void ANDandOr::print(std::ostream& os, TraversalType type) const
 {
 	switch (type)
     {
-        case TraversalType::Prefix :
-        {
+        case TraversalType::Prefix: 
             os << this->op ;
             this->inner1->print(os, type);
             this->inner2->print(os, type);
             break;
-        }
-        case TraversalType::Infix :
-        {
+        case TraversalType::Infix:
             os << "(";
             this->inner1->print(os, type);
             os << ")" << this->op << "(";
             this->inner2->print(os, type);
             os << ")";
             break;
-        }
         case TraversalType::Postfix :
-        {
             this->inner1->print(os, type);
             this->inner2->print(os, type);
             os << this->op;
             break;
-        }
-         case TraversalType::BonusInfix :
-        {
+        case TraversalType::BonusInfix:
 	     break;
-	    }
 	    default:break;
 	}
 }
