@@ -1,0 +1,4 @@
+c)Erklären Sie, warum die Methoden der Klasse Calculator virtual sind und
+erläutern Sie die Auswirkungen!
+
+Mit einer virtual Methode kann die in anderen abgeleiteten Klassen (wie UnaryCalculator, LeafCalculator, AND, OR) überschriebene Methode "Calculator" aufgerufen werden.

@@ -79,12 +79,44 @@ class NotCalculator: public UnaryCalculator
 {
 public:
     NotCalculator(std::unique_ptr<Calculator>);
-
+  
 private:
     // TODO: Add missing overrides here
+    bool operate(bool) const override;
+    
 };
 
 // TODO: Define classes for handling AND and OR
+class ANDandOr: public Calculator
+{
+public:
+    ANDandOr(std::unique_ptr<Calculator>, std::string, std::unique_ptr<Calculator>);
+private:
+    std::unique_ptr<Calculator> inner1;
+    std::string op; 
+    std::unique_ptr<Calculator> inner2;
+
+    bool calculate(const std::vector<bool>&) const override;
+    void print(std::ostream&, TraversalType) const override;
+
+    virtual bool operate(bool,bool) const=0;
+};
+
+class AND: public ANDandOr
+{
+public:
+    AND(std::unique_ptr<Calculator>,std::unique_ptr<Calculator>);
+private:
+   bool operate(bool,bool) const override;
+};
+
+class Or: public ANDandOr
+{
+public:
+    Or(std::unique_ptr<Calculator>, std::unique_ptr<Calculator>);
+private:
+   bool operate(bool,bool) const override;
+};
 
 #endif /* CALCULATOR_H_ */
 
