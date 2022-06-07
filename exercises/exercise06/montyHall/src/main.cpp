@@ -21,7 +21,18 @@ bool montyHallExperiment()
 
     // TODO: Insert code here
     // Dummy:
-    return true;
+    Show show;
+    int firstGuess;
+    std::uniform_int_distribution<int> dist(1,3);
+    firstGuess=dist(re);
+    std::cout<<"carDoor="<<show.showcarDoor()<<std::endl;
+    std::cout<<"firstGuess="<< firstGuess<<std::endl;
+    if(show.finalResult(firstGuess))
+    {std::cout<<"die Strategie war erfolgreich"<<std::endl; 
+     return true;}
+    else
+   { std::cout<<"die Strategie war nicht erfolgreich"<<std::endl;
+    return false; }  
 }
 
 /**
@@ -32,7 +43,12 @@ double montyHallExploration(int n)
 {
     // TODO: Insert code here
     // Dummy:
-    return 0;
+    double R_count;
+    int i=0;
+    for(i=0;i<n;++i)
+     {if(montyHallExperiment())
+        ++R_count;}
+    return R_count/n;
 }
 
 /**
@@ -40,7 +56,8 @@ double montyHallExploration(int n)
  */
 int main(int argv, char** argc)
 {
-    int n;
+   
+     int n;
     std::vector<std::string> arguments(argc, argc + argv);
 
     if (arguments.size() == 1)
@@ -77,6 +94,7 @@ int main(int argv, char** argc)
         std::cout << "Ratio for success changing first decision:     "
                 << 1.0-r << std::endl;
     }
+
     return 0;
 }
 

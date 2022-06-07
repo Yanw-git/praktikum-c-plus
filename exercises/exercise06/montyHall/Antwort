@@ -1,0 +1,2 @@
+1 b) Warum sind std::random_device rd und std::default_random_engine re static?
+Static rd und re sind lokale statische Variablen. Sie enden ihre Lebenszeit nicht mit Verlassen des Scope der Funktion montyHallExperiment(). Bei späterem Durchlauf verwendet der Compiler die im letzten Durchlauf erstellte rd und re weiter.

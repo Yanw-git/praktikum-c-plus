@@ -18,6 +18,7 @@ public:
     int showGoatDoor(int firstGuess);
     /** Figures out if the car is behind the door given by finalGuess */
     bool finalResult(int finalGuess) { return (finalGuess == this->carDoor); }
+    int showcarDoor() {return carDoor;}
 };
 
 
