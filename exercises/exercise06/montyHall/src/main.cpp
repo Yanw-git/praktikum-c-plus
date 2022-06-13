@@ -43,12 +43,12 @@ double montyHallExploration(int n)
 {
     // TODO: Insert code here
     // Dummy:
-    double R_count;
-    int i=0;
+    double Right_count=0;
+    int i;
     for(i=0;i<n;++i)
      {if(montyHallExperiment())
-        ++R_count;}
-    return R_count/n;
+        ++Right_count;}
+    return (Right_count/n);
 }
 
 /**

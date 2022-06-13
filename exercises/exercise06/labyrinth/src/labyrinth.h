@@ -110,7 +110,7 @@ public:
      * else prints those according to their type
      */
     void printLabyrinth(std::ostream& os, bool visualizeVisited = false) const;
-    
+    void backTrack(std::vector<std::vector<Tile>>& floor, std::vector<std::vector<Tile*>>& predecessors, Tile* current);
 };
 
 #endif /* LABYRINTH_H */
