@@ -26,7 +26,7 @@ class Player
 {
 private:
     /** Pointer to the Deck used in the game. */
-    Deck* deck;
+    Deck* deck;   //instanz of class Deck, zeift auf class Deck
 protected:
     /** Vector of cards representing the hand of this Player */
     std::vector<size_t> cards;
@@ -94,7 +94,25 @@ public:
 
 // TODO: Insert the following two concrete classes inheriting from Player:
 //        1.    AutomatedPlayer
+class AutomatedPlayer: public Player
+{
+  private:
+  public:
+  Deck* deck1;
+  AutomatedPlayer(Deck* deck1);
+  bool evaluateHand() override;
+};
+
+
 //        2.    ManualPlayer
+class ManualPlayer: public Player
+{
+    private:
+    Deck* deck2;
+    public:
+    ManualPlayer(Deck* deck):Player(deck) {}
+    bool evaluateHand() override;
+};
 
 #endif /* PLAYER_H_ */
 

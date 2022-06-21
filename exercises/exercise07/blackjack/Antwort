@@ -1,0 +1,7 @@
+d)Warum ist es – abgesehen von einem höheren Grad an Realismus – sinnvoll, den
+std::vector vollständig zu durchmischen und Karten vom Ende zu entnehmen,
+anstatt das Mischen zu sparen und Karten an zufälligen Indizes zu entnehmen?
+Schreiben Sie Ihre Begründung bitte in eine separate Datei.
+
+Bei Löschen an anderer Position(abgesehen von Ende) in std::vector ist Laufzeitkomplexität O(n), aber vom Ende Position ist O(1),effektiver. Somit sollen die Karten in vector von Ende entnommen werden.
+
