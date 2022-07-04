@@ -14,14 +14,14 @@ int main()
     std::vector<std::size_t> numbers;
     for(std::size_t i = 2; i<=100; ++i)
     {
-        numbers.push_back(i);
+        numbers.push_back(i);     
     }
     
     std::random_device rd;
     std::mt19937 g(rd());
-    std::shuffle(numbers.begin(), numbers.end(), g);
+    std::shuffle(numbers.begin(), numbers.end(), g);  //make vector nambers to a random vector
     
-    Sieve sieve(numbers);
+    Sieve sieve(numbers);   //make Instanz of class Sieve, Durch Inistallierungsliste, datenmeber sieve.numbers hat Inhalt
     sieve.reduceToPrimes();
     std::cout << "\nPrimes:\n";
     sieve.printNumbers(std::cout);
