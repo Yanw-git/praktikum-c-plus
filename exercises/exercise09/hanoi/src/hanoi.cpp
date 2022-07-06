@@ -71,9 +71,10 @@ void Hanoi::solveHanoi(size_t towersize, Tower &source, Tower &destination, Towe
         source.getTower().pop_back(); 
      }
     else
+    {
     solveHanoi(towersize-1,source,spare,destination,preMovePrint,postMovePrint);
     moveTopPlate(source,destination,preMovePrint,postMovePrint);
-    solveHanoi(towersize-1,spare,destination,source,preMovePrint,postMovePrint);
+    solveHanoi(towersize-1,spare,destination,source,preMovePrint,postMovePrint);}
 }
 
 

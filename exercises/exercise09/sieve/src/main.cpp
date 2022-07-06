@@ -19,7 +19,7 @@ int main()
     
     std::random_device rd;
     std::mt19937 g(rd());
-    std::shuffle(numbers.begin(), numbers.end(), g);  //make vector nambers to a random vector
+    std::shuffle(numbers.begin(), numbers.end(), g);  //make the vector nambers to a random vector
     
     Sieve sieve(numbers);   //make Instanz of class Sieve, Durch Inistallierungsliste, datenmeber sieve.numbers hat Inhalt
     sieve.reduceToPrimes();
