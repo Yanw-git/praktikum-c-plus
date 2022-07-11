@@ -20,10 +20,10 @@ public:
     TGAImage(const TGAImageHeader& header);
     TGAImage(const std::string& filename);
 
-    const std::vector<ARGB32>&    getData()   const { return data; }
+    const std::vector<ARGB32>&    getData()   const { return data; }   //get private data
           std::vector<ARGB32>&    getData()         { return data; }
 
-    const TGAImageHeader& getHeader() const { return header; }
+    const TGAImageHeader& getHeader() const { return header; }    //get private header
           TGAImageHeader& getHeader()       { return header; }
 
     void setData(const std::vector<ARGB32>& data)  { this->data = data; }
