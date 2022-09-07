@@ -1,0 +1,59 @@
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <cmath>
+
+class A
+{
+    private:
+    public:
+    virtual void print(std::ostream& os)=0;
+};
+
+class B:public A 
+{
+    private:
+    const unsigned data;
+    public:
+    B(const unsigned d);
+    void print(std::ostream& os) override;
+};
+
+B::B(const unsigned d):A(),data(d) {}
+
+void B::print(std::ostream& os)
+{ std::cout<< this->data;}
+
+template<typename T>
+std::vector<T>& Addone(std::vector<T>& cont)
+{
+    for(auto& i:cont)
+    { i+=1;}
+    return cont;
+}
+
+double Summe(std::vector<double>& vec)
+{
+    unsigned startValue = 0;
+  auto result= std::accumulate(vec.begin(),vec.end(),static_cast<double>(startValue),
+    [](unsigned startValue, double elem){ return startValue+std::pow(elem,3);});
+    return result;
+}
+
+int main()
+{
+     B ob1(6);
+     ob1.print(std::cout);
+     std::cout<<'\n';
+     
+     std::vector<int> v{1,2,3,4,5,6,7,8};
+     Addone(v);
+     for(auto& i:v)
+     {std::cout<<i<<" ";}
+    std::cout<<'\n';
+    
+     std::vector<double> c{1,2,3,4,5};
+     std::cout<<Summe(c);
+   
+    return 0;
+}

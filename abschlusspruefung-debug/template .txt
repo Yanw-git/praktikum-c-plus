@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <list>
+using namespace std;
+
+template<typename Container>
+void  doubleAll(Container& c)
+{
+    for(auto& i:c)
+    {
+        i*=3;
+    }
+}
+
+template<typename Container>
+void print(Container& Co)
+{
+   typename Container::iterator iter;
+   for(auto& i:Co)
+   {
+      cout<<i<<",";
+   }
+}
+
+int main()
+{
+ list<double> vec{1,2,3};
+ doubleAll(vec);
+ print(vec);
+
+    return 0;
+}

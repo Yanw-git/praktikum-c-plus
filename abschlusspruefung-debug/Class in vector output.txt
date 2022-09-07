@@ -1,0 +1,138 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+  class DataPool
+  { public:
+    int value = 0;
+    int date = 0;
+  public: DataPool(int v, int d) : value(v), date(d) {};
+  friend  ostream& operator<<(ostream& os, vector<DataPool>& v);
+};
+
+bool SortCallBack(const DataPool &a, const DataPool& b) {
+    return a.value < b.value;
+}
+
+
+ostream&  operator<<(ostream& os, vector<DataPool>& v)
+{
+    for(auto& i:v)
+    {os<<i.value<<" "<<i.date<<" ";}
+    return os;
+}
+
+int main()
+{
+    vector<DataPool> vec;
+    vec.push_back(DataPool(2, 1));
+    vec.push_back(DataPool(5, 2));
+    vec.push_back(DataPool(1, 3));
+
+
+    for(auto& i:vec)
+    cout<<i<<" ";    //output : vector<DataPool> vec(Datentype ein Class); Fehler  mit <<，<<nicht aufrufen?
+     std::sort(vec.begin(), vec.end(), SortCallBack);
+    return EXIT_SUCCESS;
+}
+
+
+//Korrekt
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+  class DataPool
+  { privat:
+    int value = 0;
+    int date = 0;
+  public: 
+  DataPool(int v, int d) : value(v), date(d) {};
+  friend  ostream& operator<<(ostream& os, vector<DataPool>& c);
+  friend  ostream& operator<<(ostream& os, DataPool& d);
+  static ostream& print(ostream& , const vector<DataPool>& );
+};
+
+bool SortCallBack(const DataPool &a, const DataPool& b) {
+    return a.value < b.value;
+}
+
+ostream&  operator<<(ostream& os, const DataPool& d)  
+{
+    os<<d.value<<" "<<d.date<<" ";
+    return os;
+}
+
+ostream&  operator<<(ostream& os, const vector<DataPool>& c)
+{
+    for(auto& i:c)  
+    {os<<i.value<<" "<<i.date<<" ";}
+    return os;
+}
+
+ostream& DataPool:: print(ostream& os, const vector<DataPool>& c)
+{
+    for(auto& i:c)   //i is a object of Datapool
+    {
+        os<<i<<",";
+    }
+    return os;
+}
+
+int main()
+{
+    vector<DataPool> vec;
+    vec.push_back(DataPool(2, 1));
+    vec.push_back(DataPool(5, 2));
+    vec.push_back(DataPool(1, 3));
+
+     //cout<<vec;
+   //DataPool::print(cout,vec);
+    //cout<<DataPool(1,2)<<" ";    //output : vector<DataPool> vec(Datentype ein Object of Class); Fehler  mit <<，<<nicht aufrufen?
+     std::sort(vec.begin(), vec.end(), SortCallBack);
+    return EXIT_SUCCESS;
+}
+
+
+//new
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class A 
+{
+    private:
+    int a;
+    vector<double> vec;
+    protected:
+    string str;
+    public:
+    A(int n, vector<double> v,string s):a(n),vec(v),str(s) {}
+    friend ostream& operator<<(ostream& os, const A& o);
+};
+
+ ostream& operator<<(ostream& os, const A& o)
+ {
+     os<<o.a<<endl;
+     for(auto& i:o.vec)
+     {
+         cout<<i;
+     }
+     os<<endl<<o.str;
+     return os;
+ }
+
+int main()
+{
+     
+     A obj(3, vector<double>{1.0,2.0,3.0},"Hello");
+     cout<<obj;
+
+    return 0;
+}

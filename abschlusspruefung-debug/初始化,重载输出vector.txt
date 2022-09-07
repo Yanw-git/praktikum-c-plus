@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+#include <vector>
+
+class A
+{
+ private:
+    std::vector<double> m_numbers;
+    std::string s;
+public:
+
+    A() = default;
+   
+    A(std::string str, std::vector<double> numbers) : s(str), m_numbers(numbers) {} // Variante 1
+   // MyClass(std::vector<int> numbers) : m_numbers(std::move(numbers)) ;// Variante 2
+   void print() 
+    {    
+        
+         for(int i=0;i<m_numbers.size();++i)
+         cout<<this->m_numbers[i]<<"  ";
+         cout<<std::endl<<s; 
+    }
+    
+friend std::ostream& operator<<(std::ostream& os, const A& p)
+ {
+     for(size_t i=0;i<p.m_numbers.size();++i)
+     os<<p.m_numbers[i]<<"  ";
+    os<<p.s;
+    return os;
+}
+};
+
+
+int main()
+{
+   A p("as",std::vector<double>{1.0, 2.9, 3.7});
+  //std::vector<MyClass> v{1,2,3};
+   //o.void Print();
+   p.print();
+   cout<<p;
+    return 0;
+}

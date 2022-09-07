@@ -1,0 +1,111 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+class Container
+{
+    private:
+    protected:
+        std::string s;
+    public:
+
+    Container(std::string str);
+    virtual void print(std::ostream& os)=0;
+    virtual ~Container()=default;
+};
+
+class DoubleContainer:public Container
+{
+    private:
+     std::vector<double> Elements;
+    // double x;
+   // double y;
+    public:
+    DoubleContainer(std::string ss, std::vector<double> v);
+    void print(std::ostream& os) override;
+    friend void operator/(DoubleContainer&,double );
+};
+
+
+Container::Container(std::string str):s(str) {}
+
+DoubleContainer::DoubleContainer(std::string ss, std::vector<double> v):Container(ss),Elements(v) {}
+
+void operator/(DoubleContainer& obj, double x)
+{
+    for(auto& elem:obj.Elements)
+    {
+        elem=elem/x;
+    }
+
+   /* 
+   DoubleContainer tmp;
+   tmp.x= a.x/b.x;
+   tmp.y=a.y /b.y;
+   return tmp;
+   */
+    
+}
+
+void DoubleContainer::print(std::ostream& os)
+{
+    os<<this->s<<std::endl;
+    for(auto& i: Elements)
+    {
+        os<<i<<", ";
+    }
+}
+
+template<typename T>
+void multi(std::vector<T>& c)
+{
+   if(!(c.size()%2))   //gerade Zahl
+   {
+         int index=c.size()/2;
+        if(c[index-1]>c[index])    
+          { T mid=c[index-1];
+           for(auto& i:c)
+             {  i=i*mid; }
+          }
+        else             //!(c[index-1]>c[index])
+            { T mid=c[index];
+          for(auto& i:c)
+             {i=i*mid; }
+            }
+           }
+   else               //c.size()/2 !=0    ungerade Container
+    {   int index=(c.size()-1)/2;
+       T mid=c[index];
+       for(auto& i:c)
+       { i*=mid;}
+    }
+}
+
+std::string Fun(std::string str)
+{ 
+   std::transform(str.begin(),str.end(),str.begin(),[](char c) -> char
+   { 
+     if(c>=65 && c<=90)  //if(c>='A' && c<='Z') 
+     { return c+32;}
+     else if(c>='a' &&c<='z')
+     { return c-32; }
+     else
+     return c;
+   });
+  return str;
+}
+
+
+int main()
+{
+    
+   DoubleContainer ob1("aBcdE", std::vector<double>{2,4,6,8,10,12});
+   ob1.print(std::cout);
+   ob1 / 4;
+   std::cout<<std::endl;
+   ob1.print(std::cout);
+   std::string s="aBcdE";
+   std::cout<<Fun(s);
+    return 0;
+}

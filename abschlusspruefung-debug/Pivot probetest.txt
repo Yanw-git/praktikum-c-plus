@@ -1,0 +1,40 @@
+5312498
+3124 5 98
+12 3     8 9
+1 2 
+
+5312498
+
+pivot 5
+
+35 12498
+pivot 3
+135 2498
+pivot 1
+13 52498
+
+to do 5312498
+pivot 5 
+partition:
+35 12498
+315 2498
+3125 498
+3124 5 98
+round 1 partition beenden.   begin 3 , iter 5 
+sort(begin,iter)  
+pivot 3.    3124
+round 2  patition 
+1324
+12 3 4    round 2 partition beenden.  begin 1, iter 3
+sort(begin,iter)   
+pivot 1 
+round 3 partion, 2 false,  begin 1, iter 2 zurück
+sort(begin iter)
+if true, beenden sort(begin,iter). start sort(iter+1,end)
+round 1 partion
+98
+8 9 
+begin 8 iter 9
+sort(iter+1,end)
+if true , beenden sort(iter+1,end)
+verlassen void sort 

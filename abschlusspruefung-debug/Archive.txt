@@ -1,0 +1,160 @@
+Losung 1  ohne operator unerladen
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+class Archive
+{
+  private:
+    
+  public:
+        virtual void print(std::ostream& os) = 0;
+        virtual ~Archive() = default;
+};
+
+class File: public Archive
+{
+   private:
+    std::string s;
+   public:
+   File(std::string str);
+   void print(std::ostream&) override;
+};
+
+class Folder: public Archive
+{
+   private:
+    std::vector<File> vec;
+   public:
+   Folder(std::vector<File> v);
+   void print(std::ostream&) override;
+};
+
+
+ File::File(std::string str):s(str) {}
+ Folder::Folder(std::vector<File> v):vec(v) {}
+ 
+ void File::print(std::ostream& os)
+ {
+     os<<this->s;
+ }
+ 
+ void Folder::print(std::ostream& os)
+ {
+     for(auto& i:vec){
+     i.print(os);   ///*********here!!!!
+     os<<" ";}
+ }
+ 
+template<typename T>
+void doubleAll(std::vector<T>& v)
+{
+    for(auto& i:v)
+    {
+        i=i*2;
+    }
+}
+
+template<typename Container>
+double quadSum(Container& cont)
+{
+    double re=std::accumulate(cont.begin(),cont.end(),0.0,[](double accum, auto elem)
+    {return accum+elem*elem; });
+    return re;
+}
+
+template<typename Container>
+void PrintCont(Container& c)
+{
+     std::cout<<std::endl;
+    for(auto& i:c)
+    {std::cout<<i<<",";}
+}
+
+ int main()
+ {
+    File c("test");
+    c.print(std::cout);
+    Folder v( {File("name"),File("a"),File("b"),File("c")});
+    v.print(std::cout);
+    
+    std::vector<double> vec{1,2,3,4,5,6,7,8,9,10};
+    doubleAll(vec);
+    PrintCont(vec);
+    
+    std::vector<double> myvec{1.0,2.0,3.0,4.0,5.0};
+    std::cout<<std::endl<<quadSum(myvec);
+     return 0;
+ }
+
+
+
+losung 2 mit operator uberladen
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+class Archive
+{
+private:
+
+public:
+  virtual void print (std::ostream & os) = 0;
+    virtual ~ Archive () = default;
+};
+
+class File:public Archive
+{
+private:
+  const std::string s;
+public:
+  File (std::string str);
+  void print (std::ostream & os) override;
+ friend std::ostream& operator<<(std::ostream& os, const File& o);
+};
+
+class Folder:public Archive
+{
+private:
+  std::vector<File> vec;
+public:
+  Folder (std::vector < File > v);
+  void print (std::ostream & os) override;
+ // friend std::ostream& operator<<(std::ostream& os, const File& o);
+};
+
+
+File::File (std::string str):s (str) {}
+
+Folder::Folder (std::vector < File > v):vec (v) {}
+
+void File::print (std::ostream & os)
+{
+  os<<this->s;
+}
+
+std::ostream& operator<<(std::ostream& os, const File& o)  /////  i is a File Object
+{
+  os<<o.s<<",";
+  return os;
+}
+
+void Folder::print (std::ostream & os)
+{
+    for(auto& i:vec)
+    {
+        os<<i<<" ";   ////*******operator uberladen   i is a File Object
+    }
+}
+
+int main ()
+{
+  File c ("test");
+  c.print (std::cout);
+  std::cout<<std::endl;
+  Folder v ( {File ("name"), File ("a"), File("b")} );
+  v.print (std::cout);
+  return 0;
+}

@@ -1,0 +1,103 @@
+#include <iostream>
+#include <list>
+#include <algorithm>
+#include <vector>
+#include <numeric>  //std::accumulate
+#include <deque>
+
+class Eating
+{
+    private:
+    
+    public:
+   virtual void print(std::ostream& os) =0;
+   virtual ~Eating()=default;
+};
+
+class Food:public Eating
+{
+    private:
+    std::string s;
+    public:
+    Food(std::string str);
+    void print(std::ostream& os)  override;
+};
+
+
+class Meal:public Eating
+{
+    private:
+    std::list<Food> ls;
+    public:
+    Meal(std::list<Food>);
+    void print(std::ostream& os) override;
+};
+
+
+Food::Food(std::string str):s(str)  {}
+
+Meal::Meal(std::list<Food> l):ls(l)   {}
+
+void Food::print(std::ostream& os) 
+{
+    std::cout<<this->s<<" ";
+}
+
+
+void Meal::print(std::ostream& os)
+{
+    for(auto& i:ls)   //i: object of Food
+    {
+        i.print(os);
+    }
+}
+
+template<typename T>
+void tripleFun(std::vector<T>& vec)
+{
+    for(auto& i:vec)
+    {
+        i*=3;
+    }
+}
+
+
+template<typename T>
+double KehrSum(std::vector<T>& c)
+{
+   double re=std::accumulate(c.begin(),c.end(),0.0,[](double accum, T elem)
+    {   return accum+1.0/static_cast<double>(elem); });
+   return re; 
+}
+
+
+template<typename Container>
+double KehrSum(Container& cont)
+{
+   double result=std::accumulate(cont.begin(),cont.end(),0.0,[](double accum, 
+    typename Container::value_type elem){  return accum+1.0/static_cast<double>(elem); });
+    return result;
+}
+
+int main()
+{
+    Food f("pizza");
+    std::list<Food> lit={{Food("suppe")},{Food("fisch")},{Food("sushi")},{Food("noodle")}};
+    Meal m(lit);
+    f.print(std::cout);
+    std::cout<<std::endl;
+    m.print(std::cout);
+    std::vector<int> v{1,2,3,4,5};
+    std::cout<<std::endl;
+    
+    tripleFun(v);
+    for(auto& i:v)
+    {std::cout<<i<<",";};
+    
+    std::vector<unsigned> myvec={1,2,3,4,5,6,7,8,9,10};
+    std::cout<<std::endl<<KehrSum(myvec);
+    
+    std::deque<unsigned> de={1,2,3};
+     std::cout<<std::endl<<KehrSum(de);
+    return 0;
+}
